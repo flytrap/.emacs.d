@@ -1,0 +1,21 @@
+
+;; Added by Package.el.  This must come before configurations of
+;; installed packages.  Don't delete this line.  If you don't want it,
+;; just comment it out by adding a semicolon to the start of the line.
+;; You may delete these explanatory comments.
+(package-initialize)
+
+(setq column-number-mode t)
+(auto-image-file-mode t)
+(setq auto-save-default nil)
+;; (setq x-select-enable-clipboard t)
+
+(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
+(load-theme 'monokai t)
+
+;(add-to-list 'load-path "~/.emacs.d/site-lisp/jdee-2.4.1/lisp")
+;(load "jde")
+(add-to-list 'load-path "~/.emacs.d/site-lisp/ecb/")
+(load-file "~/.emacs.d/site-lisp/ecb/ecb.el")
+(require 'ecb)
+;(require 'ecb-autoloads)
