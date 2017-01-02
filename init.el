@@ -17,24 +17,25 @@
 (auto-image-file-mode t)
 (setq auto-save-default nil)
 (setq x-select-enable-clipboard t)
+;; disable welcome page
+(setq inhibit-startup-message t)
+;; not product temp file
+(setq make-backup-files nil)
+
+;; custom config
+(defvar flytrap-path (expand-file-name "flytrap" user-emacs-directory))
+(add-to-list 'load-path flytrap-path)
 
 ;; load themes
-(add-to-list 'custom-theme-load-path "~/.emacs.d/themes/")
-(load-theme 'monokai t)
+(require 'init-themes)
 
-;;define the base path
-(defvar config-path "~/.emacs.d/flytrap")
-(add-to-list 'load-path config-path)
+;; custom config
 (require 'flytrap)
-(flytrap-directory)
-(flytrap-python-env)
-; (require 'elpy)
-; (require 'yasnippet)
-; (yas-global-mode 1)
-(require 'auto-complete-config)
-(ac-config-default)
-;(setq ecb-use-speedbar-instead-native-tree-buffer t)
-;(setq ecb-auto-activate t)
+
+;(require 'yasnippet)
+;(yas-global-mode 1)
+;(require 'auto-complete-config)
+;(ac-config-default)
 
 (custom-set-variables
  ;; custom-set-variables was added by Custom.
@@ -42,9 +43,7 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
   
- '(ecb-options-version "2.50")
  '(ecb-source-path (quote (("/" "/") "~/Documents/code/git/cnblogs")))
-; '(package-selected-packages (quote (elpy)))
  )
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
