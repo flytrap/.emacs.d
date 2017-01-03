@@ -17,9 +17,9 @@
   (require 'cl-lib)
   (require 'ecb)
   (setq ecb-windows-width 0.25)
-  (ecb-activate)
-  (define-key ecb-mode-map (kbd "<f12>") 'ecb-deactivate)
   (setq ecb-tip-of-the-day nil)
+  (ecb-activate)
+  (define-key ecb-mode-map (kbd "<f12>") 'ecb-deactivate)  
   )
 
 (defun python-add-breakpoint ()
@@ -46,7 +46,6 @@
 ;  (setq python-shell-interpreter "python2")
   (setq python-shell-native-complete nil)
   
-  (define-key elpy-mode-map (kbd "M-*") 'pop-tag-mark)  ; back
   (define-key elpy-mode-map (kbd "C-M-l") 'elpy-autopep8-fix-code)  ; format code
 
   (define-key python-mode-map (kbd "C-c C-b") 'python-add-breakpoint)
@@ -63,9 +62,11 @@
 ;; define key map
 (global-set-key (kbd "<f12>") 'init-ecb-directory)
 (global-set-key (kbd "<C-f12>") 'init-python-ide)
+(global-set-key (kbd "M-*") 'pop-tag-mark)  ; back
 
 ;; other config
 (require 'init-yasnippet)
 (require 'init-auto-complete)
+(require 'psvn)
 
 (provide 'flytrap)

@@ -21,6 +21,8 @@
 (setq inhibit-startup-message t)
 ;; not product temp file
 (setq make-backup-files nil)
+;; codding
+(define-coding-system-alias 'utf8 'utf-8)
 
 ;; custom config
 (defvar flytrap-path (expand-file-name "flytrap" user-emacs-directory))
