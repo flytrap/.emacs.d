@@ -2,6 +2,7 @@
 ;; require functions
 
 (require 'functions)
+(require 'projectile)
 
 ;; define var
 (defvar plugin-path (expand-file-name "plugins" user-emacs-directory))
@@ -41,8 +42,9 @@
   (if (not elpy-project-root)
       (elpy-set-project-root default-directory))
   (elpy-enable)
-  (if (not elpy-mode)
-      (elpy-mode))
+  (when (and (derived-mode-p 'python-mode)
+	     (not elpy-mode))
+    (elpy-mode))
 ;  (setq python-shell-interpreter "python2")
   (setq python-shell-native-complete nil)
   
@@ -58,7 +60,22 @@
   (require 'jdee)
   )
 
+(defun flytrap-comment-or-uncomment-region (beg end &optional arg)
+  (interactive (if (use-region-p)
+		   (progn
+		     (message (region-beginning))
+		     (list (region-beginning) (region-end) nil))
+                 (list (line-beginning-position)
+                       (line-beginning-position 2))))
+  (comment-or-uncomment-region beg end arg))
 
+;; add hook
+(add-hook 'python-mode-hook (lambda()
+			      (hs-minor-mode)
+			      (setq-default indent-tabs-mode t)
+			      (setq-default tab-width 4)
+			      (setq-default py-indent-tabs-mode t)
+			      (setq-default py-indent-tabs-mode t)))
 ;; define key map
 (global-set-key (kbd "<f12>") 'init-ecb-directory)
 (global-set-key (kbd "<C-f12>") 'init-python-ide)

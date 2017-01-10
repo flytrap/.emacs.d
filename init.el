@@ -2,10 +2,14 @@
 ;; installed packages.  Don't delete this line.  If you don't want it,
 ;; just comment it out by adding a semicolon to the start of the line.
 ;; You may delete these explanatory comments.
-;(require 'package)
+(require 'package)
 ;(add-to-list 'package-archives
 ;             '("elpy" . "http://jorgenschaefer.github.io/packages/"))
-;(package-initialize)
+
+(add-to-list 'package-archives
+	     '("melpa" . "https://melpa.org/packages/"))
+(package-initialize)
+
 
 ;; global custom
 (global-linum-mode t)
@@ -21,7 +25,9 @@
 (setq inhibit-startup-message t)
 ;; not product temp file
 (setq make-backup-files nil)
-;; codding
+;; auto revert
+(global-auto-revert-mode t)
+;; coding
 (define-coding-system-alias 'utf8 'utf-8)
 
 ;; custom config
