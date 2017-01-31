@@ -14,7 +14,7 @@
 ;; global custom
 (global-linum-mode t)
 (column-number-mode t)
-(setq linum-format "%4d\u2502")
+(setq linum-format "%4d|")
 (setq tab-width 4)
 
 (fset 'yes-or-no-p 'y-or-n-p)
